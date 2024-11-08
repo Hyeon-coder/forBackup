@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:33:55 by juhyeonl          #+#    #+#             */
-/*   Updated: 2024/11/07 23:13:51 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2024/11/08 16:14:32 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	ft_atoi(const char *nptr)
 	flag = 1;
 	i = 0;
 	while (nptr[i] && (nptr[i] == ' ' || nptr[i] == '\t'
-				|| nptr[i] == '\n' || nptr[i] == '\r'
-				|| nptr[i] == '\v' || nptr[i] == '\f'))
+			|| nptr[i] == '\n' || nptr[i] == '\r'
+			|| nptr[i] == '\v' || nptr[i] == '\f'))
 		i++;
 	if (nptr[i] == '+')
 		i++;

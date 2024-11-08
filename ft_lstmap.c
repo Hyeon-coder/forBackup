@@ -6,9 +6,11 @@
 /*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 20:50:05 by JuHyeon           #+#    #+#             */
-/*   Updated: 2024/11/07 12:19:59 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:18:26 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
