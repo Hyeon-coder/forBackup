@@ -6,7 +6,7 @@
 /*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:39:38 by JuHyeon           #+#    #+#             */
-/*   Updated: 2024/11/01 19:20:39 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2024/11/08 14:50:25 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,35 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	char	*rst;
 
-	if (s1 == NULL && s2 == NULL)
-		return (ft_strdup(""));
-	if (s1 == NULL)
-		return (ft_strdup(s2));
-	if (s2 == NULL)
-		return (ft_strdup(s1));
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	rst = (char *)malloc((len1 + len2 + 1) * sizeof(char));
-	if (rst == NULL)
+	rst = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!rst)
 		return (NULL);
-	i = 0;
-	while (i++ < len1)
-		rst[i] = s1[i];
-	len1 = 0;
-	while (len1 < len2)
-		rst[i++] = s2[len1++];
-	rst[i] = '\0';
+	if (s1 && s2)
+	{
+		i = -1;
+		while (s1[++i])
+			rst[i] = s1[i];
+		while (s2[++i])
+		{
+			rst[len1] = s2[i];
+			len1++;
+		}
+		rst[len1] = '\0';
+	}
+	else if (!s1 && s2)
+	{
+		while (s2
+	}
+	else if (s1 && !s2)
+	{
+
+	}
+	else
+	{
+		return (NULL)
+	}
+	
 	return (rst);
 }

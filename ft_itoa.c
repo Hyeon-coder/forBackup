@@ -6,7 +6,7 @@
 /*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 19:16:13 by JuHyeon           #+#    #+#             */
-/*   Updated: 2024/11/04 01:01:52 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:32:00 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	cnt_num(int n)
 {
 	int	cnt;
 
-	cnt = 0;
-	while (n != 0)
+	cnt = (n <= 0) ? 1 : 0;
+	while (n)
 	{
-		n = n / 10;
+		n /= 10;
 		cnt++;
 	}
 	return (cnt);
@@ -29,15 +29,25 @@ char	*ft_itoa(int n)
 {
 	char	*rst;
 	int		len;
+	long	num;
 
-	if (n < 0)
+	num = n;
+	len = cnt_num(num);
+	rst = (char *)malloc((len + 1) * sizeof(char));
+	if (!rst)
 		return (0);
-	len = cnt_num(n);
-	rst = (char *)malloc(len * sizeof(char) + 1);
-	while (n != 0)
+	rst[len] = '\0';
+	if (num < 0)
 	{
-		rst[--len] = (n % 10) + '0';
-		n = n / 10;
+		rst[0] = '-';
+		num = -num;
+	}
+	else if (num == 0)
+		rst[0] = '0';
+	while (num > 0)
+	{
+		rst[--len] = (num % 10) + '0';
+		num /= 10;
 	}
 	return (rst);
 }
