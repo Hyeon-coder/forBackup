@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:33:55 by juhyeonl          #+#    #+#             */
-/*   Updated: 2024/11/08 16:14:32 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2024/11/11 14:59:27 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int	ft_atoi(const char *nptr)
 			|| nptr[i] == '\n' || nptr[i] == '\r'
 			|| nptr[i] == '\v' || nptr[i] == '\f'))
 		i++;
-	if (nptr[i] == '+')
-		i++;
-	else if (nptr[i] == '-')
+	if (nptr[i] == '-')
 	{
 		flag *= -1;
 		i++;
 	}
+	else if (nptr[i] == '+')
+		i++;
 	while (ft_isdigit(nptr[i]))
 	{
 		num = (num * 10) + (nptr[i] - '0');
