@@ -6,7 +6,7 @@
 /*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:20:32 by JuHyeon           #+#    #+#             */
-/*   Updated: 2024/11/18 17:30:23 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2024/11/18 18:10:04 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ char	*ft_itoa_base(unsigned int i, char *base)
 	int	cnt;
 	int	tmp;
 
-	printf("%s\n", base);
 	cnt = 0;
 	if (!i || !base)
 		return (0);
@@ -86,21 +85,12 @@ char	*ft_itoa_base(unsigned int i, char *base)
 	tmp = cnt;
 	while (i != 0)
 	{
-		if (i <= 16)
-			rst[tmp] = base[i];
-		else
-		{
-			if (i % a > 10)
-				rst[tmp] = base[i];
-			else
-				rst[tmp] = i % a + '0';
-		}
-		printf("rst[%d] : %c\n", tmp, rst[tmp]);
+		if (i != 0)
+			rst[tmp] = base[i % a];
 		i /= a;
 		tmp--;
 	}
 	rst[cnt + 1] = '\0';
-	printf("rst : %s\n", rst);
 	return (rst);
 }
 
@@ -118,11 +108,11 @@ int	form_check(const char *format, va_list args)
 	else if (*format == 'd' || *format == 'i')
 		i += ft_putstr_rt(ft_itoa(va_arg(args, int)));
 //	else if (*format == 'u')
-//		i += ft_itoa_base(		);
+//		i += ft_putstr_rt(ft_itoa_base(va_arg(args, int), "012345678"));
 	else if (*format == 'x')
 		i += ft_putstr_rt(ft_itoa_base(va_arg(args, int), "0123456789abcdef"));
-//	else if (*format == 'X')
-//		i += ft_itoa_base(		);
+	else if (*format == 'X')
+		i += ft_putstr_rt(ft_itoa_base(va_arg(args, int), "0123456789ABCDEF"));
 	else if (*format == '%')
 		i += ft_putchar_rt('%');
 	return (i);
@@ -154,10 +144,10 @@ int	ft_printf(const char *format, ...)
 int	main(void)
 {
 //	char	*str = "Juhyeon";
-	int	str = 999;
+	int	str = -999;
 
-	ft_printf("%x", str);
+	ft_printf("%u", str);
 	printf("\n-----\n");
-	printf("%x", str);
+	printf("%u", str);
 	return 0;
 }
