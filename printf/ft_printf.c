@@ -6,7 +6,7 @@
 /*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:20:32 by JuHyeon           #+#    #+#             */
-/*   Updated: 2024/11/18 14:31:26 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2024/11/18 17:30:23 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,66 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
+size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+char	*ft_itoa_base(unsigned int i, char *base)
+{
+	unsigned int	a;
+	char	*rst;
+	int	cnt;
+	int	tmp;
+
+	printf("%s\n", base);
+	cnt = 0;
+	if (!i || !base)
+		return (0);
+	if (ft_strlen(base) == 2)
+		a = 2;
+	else if (ft_strlen(base) == 8)
+		a = 8;
+	else if (ft_strlen(base) == 16)
+		a = 16;
+	else
+		return (0);
+	tmp = i;
+	while (i / a != 0)
+	{
+		i /= a;
+		cnt++;
+	}
+	rst = (char *)malloc(cnt * sizeof(char) + 1);
+	if (!rst)
+		return (0);
+	i = tmp;
+	tmp = cnt;
+	while (i != 0)
+	{
+		if (i <= 16)
+			rst[tmp] = base[i];
+		else
+		{
+			if (i % a > 10)
+				rst[tmp] = base[i];
+			else
+				rst[tmp] = i % a + '0';
+		}
+		printf("rst[%d] : %c\n", tmp, rst[tmp]);
+		i /= a;
+		tmp--;
+	}
+	rst[cnt + 1] = '\0';
+	printf("rst : %s\n", rst);
+	return (rst);
+}
+
 int	form_check(const char *format, va_list args)
 {
 	int	i;
@@ -53,15 +113,16 @@ int	form_check(const char *format, va_list args)
 		i += ft_putchar_rt(va_arg(args, int));
 	else if (*format == 's')
 		i += ft_putstr_rt(va_arg(args, char *));
-	else if (*format == 'p')	// n
-		i += ft_putstr_rt(va_arg(args, void *));
+//	else if (*format == 'p')
+//		i += ft_itoa_base(		);
 	else if (*format == 'd' || *format == 'i')
 		i += ft_putstr_rt(ft_itoa(va_arg(args, int)));
-	else if (*format == 'u')	// n
-		i += ft_putchar_rt(*format);
-	else if (*format == 'x')	// n
-		i += ft_
-	else if (*format == 'X')	// n
+//	else if (*format == 'u')
+//		i += ft_itoa_base(		);
+	else if (*format == 'x')
+		i += ft_putstr_rt(ft_itoa_base(va_arg(args, int), "0123456789abcdef"));
+//	else if (*format == 'X')
+//		i += ft_itoa_base(		);
 	else if (*format == '%')
 		i += ft_putchar_rt('%');
 	return (i);
@@ -93,15 +154,10 @@ int	ft_printf(const char *format, ...)
 int	main(void)
 {
 //	char	*str = "Juhyeon";
-	int	str = 42;
-	char	c = 'a';
+	int	str = 999;
 
-	ft_printf("Hello, %d", str);
-	ft_printf("\n");
-	ft_printf("%c", c);
+	ft_printf("%x", str);
 	printf("\n-----\n");
-	printf("Hello, %x", str);
-	printf("\n");
-	printf("%c", c);
+	printf("%x", str);
 	return 0;
 }
