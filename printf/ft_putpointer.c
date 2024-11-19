@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putpointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 00:57:43 by JuHyeon           #+#    #+#             */
-/*   Updated: 2024/11/11 18:26:44 by juhyeonl         ###   ########.fr       */
+/*   Created: 2024/11/19 20:07:28 by JuHyeon           #+#    #+#             */
+/*   Updated: 2024/11/19 22:36:03 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putpointer(void *ptr)
 {
-	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd);
-	else
+	int	len;
+	char	*str;
+
+	if (!ptr)
 	{
-		if (n < 0)
-		{
-			ft_putchar_fd('-', fd);
-			n *= -1;
-		}
-		if (n >= 10)
-			ft_putnbr_fd(n, fd);
-		ft_putchar_fd(n % 10 + '0', fd);
+		ft_putstr_rt("(null)");
+		return (ft_strlen("(null)"));
 	}
+	ft_putstr_rt("0x");
+	str = ft_itoa_base((unsigned long)ptr, "0123456789abcdef");
+	if (!str)
+		return (0);
+	len = ft_putstr_rt(str);
+	free(str);
+	return (len + 2);
 }
