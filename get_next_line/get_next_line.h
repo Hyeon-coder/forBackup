@@ -3,11 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 14:27:17 by JuHyeon           #+#    #+#             */
-/*   Updated: 2024/11/20 14:27:18 by JuHyeon          ###   ########.fr       */
+/*   Created: 2024/11/23 13:31:15 by juhyeonl          #+#    #+#             */
+/*   Updated: 2024/11/23 13:40:09 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+# ifdef GET_NEXT_LINE_H
+#define GET_NEXT_LINE_H
 
+char	*get_next_line(int fd);
+
+#endif
