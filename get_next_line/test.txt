@@ -1,4 +1,3 @@
-Hello, World!
-Welcome to get_next_line.
-This is the end.
-
+This is test 	1
+file 			1
+Hello World!	1
