@@ -6,7 +6,7 @@
 /*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 14:27:04 by JuHyeon           #+#    #+#             */
-/*   Updated: 2024/11/27 20:07:53 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2024/11/28 14:54:22 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlen(const char *s)
 	len = 0;
 	while (s && s[len])
 		len++;
-	return len;
+	return (len);
 }
 
 char	*ft_strchr(const char *s, int c)

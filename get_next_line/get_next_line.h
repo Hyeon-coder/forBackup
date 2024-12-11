@@ -6,12 +6,16 @@
 /*   By: juhyeonl <juhyeonl@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 13:31:15 by juhyeonl          #+#    #+#             */
-/*   Updated: 2024/11/27 21:18:37 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2024/12/11 14:20:55 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef GET_NEXT_LINE_H
-#define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
 
 # include <unistd.h>
 # include <stdlib.h>
