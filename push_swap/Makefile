@@ -3,17 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juhyeonl <juhyeonl@student.hive.fi>        +#+  +:+       +#+         #
+#    By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/07 20:04:17 by juhyeonl          #+#    #+#              #
-#    Updated: 2024/12/07 20:04:55 by juhyeonl         ###   ########.fr        #
+#    Updated: 2024/12/17 15:58:42 by juhyeonl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRCS = \
-	push_swap.c
+		main.c \
+		stack_util.c \
+		utils.c
 
 OBJ = $(SRCS:.c=.o)
 

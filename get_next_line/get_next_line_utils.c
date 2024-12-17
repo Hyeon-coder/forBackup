@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 14:27:04 by JuHyeon           #+#    #+#             */
-/*   Updated: 2024/11/28 14:54:22 by juhyeonl         ###   ########.fr       */
+/*   Created: 2024/12/12 15:18:00 by juhyeonl          #+#    #+#             */
+/*   Updated: 2024/12/12 15:18:05 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	len;
 
-	if (!s)
-		return (0);
 	len = 0;
 	while (s && s[len])
 		len++;
@@ -34,49 +32,31 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)s);
 		s++;
 	}
+	if (c == '\0')
+		return ((char *)s);
 	return (NULL);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	len1;
-	size_t	len2;
+	char	*result;
 	size_t	i;
-	char	*rst;
+	size_t	j;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	rst = malloc(len1 + len2 + 1);
-	if (!rst)
+	if (!s1 && !s2)
+		return (NULL);
+	result = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!result)
 		return (NULL);
 	i = 0;
-	if (s1)
+	while (s1 && s1[i])
 	{
-		while (*s1)
-			rst[i++] = *s1++;
-	}
-	while (*s2)
-		rst[i++] = *s2++;
-	rst[i] = '\0';
-	return (rst);
-}
-
-char	*ft_strdup(const char *s)
-{
-	size_t	len;
-	size_t	i;
-	char	*dup;
-
-	len = ft_strlen(s);
-	dup = malloc(len + 1);
-	if (!dup)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		dup[i] = s[i];
+		result[i] = s1[i];
 		i++;
 	}
-	dup[len] = '\0';
-	return (dup);
+	j = 0;
+	while (s2 && s2[j])
+		result[i++] = s2[j++];
+	result[i] = '\0';
+	return (result);
 }

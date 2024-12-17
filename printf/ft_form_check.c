@@ -6,11 +6,9 @@
 /*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:37:49 by JuHyeon           #+#    #+#             */
-/*   Updated: 2024/11/19 23:18:14 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2024/11/23 16:31:20 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "ft_printf.h"
 
 #include "ft_printf.h"
 
@@ -26,6 +24,7 @@ static int	parse_char(const char *format, va_list args)
 static int	parse_string(const char *format, va_list args)
 {
 	char	*str;
+	void	*ptr;
 
 	if (*format == 's')
 	{
@@ -34,7 +33,7 @@ static int	parse_string(const char *format, va_list args)
 	}
 	if (*format == 'p')
 	{
-		void *ptr = va_arg(args, void *);
+		ptr = va_arg(args, void *);
 		return (ft_putpointer(ptr));
 	}
 	return (0);

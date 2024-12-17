@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   stack_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 19:56:45 by juhyeonl          #+#    #+#             */
-/*   Updated: 2024/12/07 20:04:13 by juhyeonl         ###   ########.fr       */
+/*   Created: 2024/12/17 15:57:18 by juhyeonl          #+#    #+#             */
+/*   Updated: 2024/12/17 16:44:57 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_stack_push(t_list **lst, t_list *new)
+#include "push_swap.h"
+
+t_stack	*ft_stack(char *nptr)
+{
+	t_stack	*n_node;
+	int	data;
+
+	data = ft_atoi(nptr);
+	n_node = (t_stack *)malloc(sizeof(*n_node));
+	if (!n_node)
+		return (NULL);
+	n_node->data = data;
+	n_node->next = NULL;
+	return (n_node);
+}
+
+void	stack_push(t_stack **lst, t_stack *new)
 {
 	if (!lst || !new)
 		return ;
@@ -18,9 +34,9 @@ void	ft_stack_push(t_list **lst, t_list *new)
 	*lst = new;
 }
 
-void	ft_stack_pop(t_list **lst, t_list *new)
+ft_switch()
 {
-
+	
 }
 
-void	push_swap(
+ft_pop
