@@ -1,55 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_digit_utils.c                                :+:      :+:    :+:   */
+/*   command_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 21:25:22 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/10 14:01:20 by juhyeonl         ###   ########.fr       */
+/*   Created: 2025/01/10 14:43:41 by juhyeonl          #+#    #+#             */
+/*   Updated: 2025/01/10 16:45:45 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isspace(char **av)
+int	ft_lstsize(t_stack *lst)
 {
-	int	i;
-	int	j;
+	int			cnt;
+	t_stack		*tmp;
 
-	i = 1;
-	j = 0;
-	while (av[i])
+	tmp = (t_stack *)lst;
+	cnt = 0;
+	while (tmp)
 	{
-		while (av[i][j])
-		{
-			if (av[i][j] == ' ' || (9 <= av[i][j] && av[i][j] <= 13))
-				return (1);
-			j++;
-		}
-		i++;
+		cnt++;
+		tmp = tmp->next;
 	}
-	return (0);
+	return (cnt);
 }
 
-int	ft_isvalid_input(char **av)
+void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
-	int	i;
-	int	j;
+	t_stack	*tmp;
 
-	i = 1;
-	while (av[i])
+	if (!lst || !new)
+		return ;
+	if (!(*lst))
+		*lst = new;
+	else
 	{
-		j = 0;
-		if (av[i][j] == '-')
-			j++;
-		while (av[i][j])
-		{
-			if (!('0' <= av[i][j] && av[i][j] <= '9'))
-				return (1);
-			j++;
-		}
-		i++;
+		tmp = *lst;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
 	}
-	return (0);
 }

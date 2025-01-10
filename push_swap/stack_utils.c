@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 22:03:01 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/09 23:21:24 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/01/10 16:01:13 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,30 @@ void	stack_push(t_stack **lst, t_stack *new)
 		return ;
 	new->next = *lst;
 	*lst = new;
+	if (*lst)
+	{
+		if ((*lst)->next)
+			(*lst)->size = (*lst)->next->size + 1;
+		else
+			(*lst)->size = 1;
+	}
 }
 
-t_stack	*stack_pop(t_stack *lst)
+t_stack	*stack_pop(t_stack **lst)
 {
-	lst = lst->next;
-	return (lst);
+	t_stack *popped_node;
+
+	if (!lst || !*lst)
+		return NULL;
+	popped_node = *lst;
+	*lst = (*lst)->next;
+	if (*lst)
+		(*lst)->size = popped_node->size - 1;
+	popped_node->next = NULL;
+	return (popped_node);
 }
 
-char	*stack_peek(t_stack *lst)
+int	stack_peek(t_stack *lst)
 {
 	return (lst->num);
 }

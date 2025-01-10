@@ -3,36 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   input_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:52:31 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/09 23:19:47 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/01/10 15:50:16 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_isvalid_input(char **av)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (av[i])
-	{
-		j = 0;
-		if (av[i][j] == '-')
-			j++;
-		while (av[i][j])
-		{
-			if (!('0' <= av[i][j] && av[i][j] <= '9'))
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
 
 int	check_double(t_stack *a)
 {
@@ -74,14 +52,18 @@ t_stack	*input_tmp_stack(int ac, char **av)
 	return (rst);
 }
 
-int	input_parse(int ac, char **av, t_stack **a, t_stack **b)
+t_stack	*input_parse(int ac, char **av)
 {
+	t_stack	*rst;
+
+	rst = NULL;
 	if (ac == 1)
 		exit(0);
 	if (ft_isvalid_input(av))
 		exit_error(1, NULL, NULL);
-	*a = input_tmp_stack(ac, av);
-	if (check_double(*a))
-		exit_error(1, *a, NULL);
-	return (1);
+	rst = input_tmp_stack(ac, av);
+	if (check_double(rst))
+		exit_error(1, rst, NULL);
+	rst->size = ac - 1;
+	return (rst);
 }

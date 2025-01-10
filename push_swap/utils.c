@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 20:04:08 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/09 23:22:46 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/01/10 14:26:29 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_atoi(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		num = num * 10 + (*str - '0');
-		if (-2147483648 < (num * flag) || (num * flag) < 2147483647)
+		if (!(-2147483648 < (num * flag) || (num * flag) < 2147483647))
 			exit_error(1, NULL, NULL);
 		str++;
 	}
