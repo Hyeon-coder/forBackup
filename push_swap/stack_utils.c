@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_util.c                                       :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 15:57:18 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/01/08 15:52:10 by juhyeonl         ###   ########.fr       */
+/*   Created: 2025/01/09 22:03:01 by JuHyeon           #+#    #+#             */
+/*   Updated: 2025/01/09 23:21:24 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ t_stack	*stack_pop(t_stack *lst)
 
 char	*stack_peek(t_stack *lst)
 {
-	return (lst->data);
+	return (lst->num);
 }
 
-t_stack	*ft_stack(char *nptr)
+void	free_stack(t_stack *stack)
 {
-	t_stack	*n_node;
-	
-	n_node = (t_stack *)malloc(sizeof(*n_node));
-	if (!n_node)
-		return (NULL);
-	n_node->data = nptr;
-	n_node->next = NULL;
-	return (n_node);
+	t_stack	*temp;
+
+	while (stack)
+	{
+		temp = stack;
+		stack = stack->next;
+		free(temp);
+	}
 }
