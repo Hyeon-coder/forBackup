@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:37:42 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/10 16:50:19 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/13 07:32:57 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,8 @@ void	ps_push(t_stack **lst, t_stack **dst);
 void	ps_rotate(t_stack **lst);
 void	ps_reverse(t_stack **lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
+int		calculate_pivot(t_stack *a);
+void	sort_array(int *arr, int size);
+int		*stack_to_array(t_stack *a, int size);
 
 #endif

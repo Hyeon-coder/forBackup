@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <ljh3900@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 22:03:01 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/10 16:01:13 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/13 06:57:58 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	stack_push(t_stack **lst, t_stack *new)
 
 t_stack	*stack_pop(t_stack **lst)
 {
-	t_stack *popped_node;
+	t_stack	*popped_node;
 
 	if (!lst || !*lst)
-		return NULL;
+		return (NULL);
 	popped_node = *lst;
 	*lst = (*lst)->next;
 	if (*lst)

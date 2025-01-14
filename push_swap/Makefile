@@ -3,16 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+         #
+#    By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/07 20:04:17 by juhyeonl          #+#    #+#              #
-#    Updated: 2025/01/10 14:43:37 by juhyeonl         ###   ########.fr        #
+#    Updated: 2025/01/13 07:40:44 by JuHyeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRCS = \
+		algo_utils.c \
+		algorithm.c \
 		check_digit_utils.c \
 		command_utils.c \
 		input_parse.c \

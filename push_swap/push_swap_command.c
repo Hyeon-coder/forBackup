@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_command.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:00:54 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/01/10 17:10:41 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/13 07:44:04 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ps_swap(t_stack **lst)
 {
 	t_stack	*first;
 	t_stack	*second;
-	
+
 	if ((*lst)->size > 1)
 	{
 		first = stack_pop(lst);
@@ -29,7 +29,7 @@ void	ps_swap(t_stack **lst)
 void	ps_push(t_stack **lst, t_stack **dst)
 {
 	t_stack	*tmp;
-		
+
 	if ((*lst)->size > 1)
 	{
 		tmp = stack_pop(lst);
@@ -40,7 +40,7 @@ void	ps_push(t_stack **lst, t_stack **dst)
 void	ps_rotate(t_stack **lst)
 {
 	t_stack	*tmp;
-	
+
 	if ((*lst)->size > 1)
 	{
 		tmp = stack_pop(lst);
@@ -50,8 +50,8 @@ void	ps_rotate(t_stack **lst)
 
 void	ps_reverse(t_stack **lst)
 {
-	t_stack *last;
-	t_stack *second_last;
+	t_stack	*last;
+	t_stack	*second_last;
 
 	if ((*lst)->size > 1)
 	{
