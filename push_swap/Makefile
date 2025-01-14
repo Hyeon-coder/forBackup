@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+         #
+#    By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/07 20:04:17 by juhyeonl          #+#    #+#              #
-#    Updated: 2025/01/13 07:40:44 by JuHyeon          ###   ########.fr        #
+#    Updated: 2025/01/14 12:05:28 by juhyeonl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,10 @@ SRCS = \
 		command_utils.c \
 		input_parse.c \
 		main.c \
-		push_swap_command.c \
+		ft_push.c \
+		ft_reverse.c \
+		ft_rotate.c \
+		ft_swap.c \
 		stack_utils.c \
 		utils.c
 OBJ = $(SRCS:.c=.o)

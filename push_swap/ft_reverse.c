@@ -1,52 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_command.c                                :+:      :+:    :+:   */
+/*   ft_reverse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 14:00:54 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/01/13 07:44:04 by JuHyeon          ###   ########.fr       */
+/*   Created: 2025/01/14 11:14:40 by juhyeonl          #+#    #+#             */
+/*   Updated: 2025/01/14 12:11:19 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ps_swap(t_stack **lst)
-{
-	t_stack	*first;
-	t_stack	*second;
-
-	if ((*lst)->size > 1)
-	{
-		first = stack_pop(lst);
-		second = stack_pop(lst);
-		stack_push(lst, first);
-		stack_push(lst, second);
-	}
-}
-
-void	ps_push(t_stack **lst, t_stack **dst)
-{
-	t_stack	*tmp;
-
-	if ((*lst)->size > 1)
-	{
-		tmp = stack_pop(lst);
-		stack_push(dst, tmp);
-	}
-}
-
-void	ps_rotate(t_stack **lst)
-{
-	t_stack	*tmp;
-
-	if ((*lst)->size > 1)
-	{
-		tmp = stack_pop(lst);
-		ft_lstadd_back(lst, tmp);
-	}
-}
 
 void	ps_reverse(t_stack **lst)
 {
@@ -67,4 +31,25 @@ void	ps_reverse(t_stack **lst)
 		last->next = *lst;
 		*lst = last;
 	}
+}
+
+void	rra(t_stack **lst, int flag)
+{
+	ps_reverse(lst);
+	if (flag)
+		write(1, "rra\n", 4);
+}
+
+void	rrb(t_stack **lst, int flag)
+{
+	ps_reverse(lst);
+	if (flag)
+		write(1, "rrb\n", 4);
+}
+
+void	rrr(t_stack **lst, t_stack **lst2)
+{
+	rra(lst, 0);
+	rrb(lst2, 0);
+	write(1, "rrr\n", 4);
 }

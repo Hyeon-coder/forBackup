@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 07:40:08 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/13 07:40:21 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/01/14 10:18:34 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	*stack_to_array(t_stack *a, int size)
 	int	*arr;
 	int	i;
 
-	arr = (int *)malloc(sizeof(int) * size);
+	arr = (int *)malloc(size * sizeof(int));
 	if (!arr)
 		exit_error(1, a, NULL);
 	i = 0;
@@ -37,10 +37,11 @@ void	sort_array(int *arr, int size)
 	int	temp;
 
 	i = 0;
-	while (i < size - 1)
+	size--;
+	while (i < size)
 	{
 		j = 0;
-		while (j < size - 1 - i)
+		while (j < size - i)
 		{
 			if (arr[j] > arr[j + 1])
 			{

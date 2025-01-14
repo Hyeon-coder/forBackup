@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:33:14 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/13 07:34:37 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/01/14 12:15:06 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,22 @@ int	main(int ac, char **av)
 
 	a = input_parse(ac, av);
 	b = NULL;
-	// printf("---------swap_a--------\n");
-	// ps_swap(&a);
-	// print_list(a);
-	// printf("---------push_a--------\n");
-	// ps_push(&a, &b);
-	// print_list(a);
-	// printf("---------push_b--------\n");
-	// print_list(b);
-	// printf("---------rotate_a--------\n");
-	// ps_rotate(&a);
-	// print_list(a);
-	// printf("---------reverse_rotate_a--------\n");
-	// ps_reverse(&a);
-	// print_list(a);
 	pivot = calculate_pivot(a);
-	printf("%d", pivot);
+	printf("\nIn the main >> pivot >>> %d\n\n", pivot);
+	printf("-----a------\n");
+	print_list(a);
+	printf("------b------\n\n--------------\n");
+	print_list(b);
+	if (ac <= 4)
+		sort_three(&a);
+	else if (ac <= 6)
+		sort_five(&a, &b);
+	else
+		quicksort_stack(&a, &b, a->size);
+	printf("------a------\n");
+	print_list(a);
+	printf("------b------\n");
+	print_list(b);
 	free_stack(a);
 	free_stack(b);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:37:42 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/13 07:32:57 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/01/14 12:12:00 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,27 @@ void	free_stack(t_stack *stack);
 t_stack	*ft_lstnew(int num);
 t_stack	*input_tmp_stack(int ac, char **av);
 int		ft_lstsize(t_stack *lst);
-void	ps_swap(t_stack **lst);
 void	ps_push(t_stack **lst, t_stack **dst);
+void	pa(t_stack **lst, t_stack **dst);
+void	pb(t_stack **lst, t_stack **dst);
+void	ps_swap(t_stack **lst);
+void	sa(t_stack **lst, int flag);
+void	sb(t_stack **lst, int flag);
+void	ss(t_stack **lst, t_stack **lst2);
 void	ps_rotate(t_stack **lst);
+void	ra(t_stack **lst, int flag);
+void	rb(t_stack **lst, int flag);
+void	rr(t_stack **lst, t_stack **lst2);
 void	ps_reverse(t_stack **lst);
+void	rra(t_stack **lst, int flag);
+void	rrb(t_stack **lst, int flag);
+void	rrr(t_stack **lst, t_stack **lst2);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 int		calculate_pivot(t_stack *a);
 void	sort_array(int *arr, int size);
 int		*stack_to_array(t_stack *a, int size);
+void	sort_three(t_stack **a);
+void	sort_five(t_stack **a, t_stack **b);
+void	quicksort_stack(t_stack **a, t_stack **b, int size);
 
 #endif

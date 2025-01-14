@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 06:59:18 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/13 07:42:48 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/01/14 12:12:44 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,37 +34,37 @@ void	sort_three(t_stack **a)
 	mid = (*a)->next->num;
 	bottom = (*a)->next->next->num;
 	if (top > mid && mid < bottom && top < bottom)
-		ps_swap(a);
+		sa(a, 1);
 	else if (top > mid && mid > bottom)
 	{
-		ps_swap(a);
-		ps_reverse(a);
+		sa(a, 1);
+		rra(a, 1);
 	}
 	else if (top > bottom && mid < bottom)
-		ps_rotate(a);
+		ra(a, 1);
 	else if (top < mid && mid > bottom && top < bottom)
 	{
-		ps_swap(a);
-		ps_rotate(a);
+		sa(a, 1);
+		ra(a, 1);
 	}
 	else if (top < mid && mid > bottom && top > bottom)
-		ps_reverse(a);
+		rra(a, 1);
 }
 
 void	sort_five(t_stack **a, t_stack **b)
 {
-	while (ft_lstsize(*a) > 3)
-		ps_push(a, b);
+	while ((*a)->size > 3)
+		pa(a, b);
 	sort_three(a);
 	while (*b)
-		ps_push(b, a);
+		pb(b, a);
 }
 
 void	quicksort_stack(t_stack **a, t_stack **b, int size)
 {
 	int	pivot;
 	int	count;
-
+	
 	if (size <= 3)
 	{
 		sort_three(a);
@@ -75,9 +75,9 @@ void	quicksort_stack(t_stack **a, t_stack **b, int size)
 	while (count < size)
 	{
 		if ((*a)->num < pivot)
-			ps_push(a, b);
+			pa(a, b);
 		else
-			ps_rotate(a);
+			ra(a, 1);
 		count++;
 	}
 	quicksort_stack(a, b, size / 2);
