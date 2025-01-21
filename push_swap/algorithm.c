@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 06:59:18 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/14 12:12:44 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:45:09 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	calculate_pivot(t_stack *a)
 	int	*arr;
 	int	pivot;
 
-	arr = stack_to_array(a, a->size);
-	sort_array(arr, a->size);
-	pivot = arr[a->size / 2];
+	arr = stack_to_array(a, ft_lstsize(a));
+	sort_array(arr, ft_lstsize(a));
+	pivot = arr[ft_lstsize(a) / 2];
 	free(arr);
 	return (pivot);
 }
@@ -53,33 +53,41 @@ void	sort_three(t_stack **a)
 
 void	sort_five(t_stack **a, t_stack **b)
 {
-	while ((*a)->size > 3)
-		pa(a, b);
-	sort_three(a);
-	while (*b)
-		pb(b, a);
-}
+	int pivot;
 
-void	quicksort_stack(t_stack **a, t_stack **b, int size)
-{
-	int	pivot;
-	int	count;
-	
-	if (size <= 3)
-	{
-		sort_three(a);
-		return ;
-	}
 	pivot = calculate_pivot(*a);
-	count = 0;
-	while (count < size)
+	while (ft_lstsize(*a) > 3)
 	{
 		if ((*a)->num < pivot)
+			pb(a, b);
+		else
+			ra(a, 1);
+	}
+	sort_three(a);
+	while (*b)
+	{
+		rrb(b, 1);
+		pa(b, a);
+	}
+}
+
+void quicksort_stack(t_stack **a, t_stack **b)
+{
+	int pivot;
+	int	i;
+
+	i = ft_lstsize(*a);
+	pivot = calculate_pivot(*a);
+	printf("pivot >>> %d\n", pivot);
+	while (i--)
+	{
+		if (stack_peek(*a) < pivot)
 			pa(a, b);
 		else
 			ra(a, 1);
-		count++;
 	}
-	quicksort_stack(a, b, size / 2);
-	quicksort_stack(b, a, size - size / 2);
+	printf("--a--\n");
+	print_list(*a);
+	printf("--b--\n");
+	print_list(*b);
 }

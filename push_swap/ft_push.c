@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:14:47 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/01/14 11:37:23 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/15 08:54:36 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ps_push(t_stack **lst, t_stack **dst)
 {
 	t_stack	*tmp;
 
-	if ((*lst)->size >= 1)
+	if (ft_lstsize(*lst) >= 1)
 	{
 		tmp = stack_pop(lst);
 		

@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:37:42 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/14 12:12:00 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:17:27 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 typedef struct s_stack
 {
 	int				num;
-	int				size;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -59,6 +58,6 @@ void	sort_array(int *arr, int size);
 int		*stack_to_array(t_stack *a, int size);
 void	sort_three(t_stack **a);
 void	sort_five(t_stack **a, t_stack **b);
-void	quicksort_stack(t_stack **a, t_stack **b, int size);
+void	quicksort_stack(t_stack **a, t_stack **b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:12:49 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/01/14 12:11:02 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/15 08:54:09 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ps_swap(t_stack **lst)
 	t_stack	*first;
 	t_stack	*second;
 
-	if ((*lst)->size > 1)
+	if (ft_lstsize(*lst) > 1)
 	{
 		first = stack_pop(lst);
 		second = stack_pop(lst);

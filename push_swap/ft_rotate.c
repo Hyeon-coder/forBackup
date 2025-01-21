@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:14:38 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/01/14 12:11:09 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/15 08:52:56 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ps_rotate(t_stack **lst)
 {
 	t_stack	*tmp;
 
-	if ((*lst)->size > 1)
+	if (ft_lstsize(*lst) > 1)
 	{
 		tmp = stack_pop(lst);
 		ft_lstadd_back(lst, tmp);

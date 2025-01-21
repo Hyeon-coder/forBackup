@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:33:14 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/14 12:15:06 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:45:51 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,19 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
-	int		pivot;
 
 	a = input_parse(ac, av);
 	b = NULL;
-	pivot = calculate_pivot(a);
-	printf("\nIn the main >> pivot >>> %d\n\n", pivot);
-	printf("-----a------\n");
-	print_list(a);
-	printf("------b------\n\n--------------\n");
-	print_list(b);
-	if (ac <= 4)
+	if (ft_lstsize(a) <= 3)
 		sort_three(&a);
-	else if (ac <= 6)
+	else if (ft_lstsize(a) <= 5)
 		sort_five(&a, &b);
 	else
-		quicksort_stack(&a, &b, a->size);
-	printf("------a------\n");
-	print_list(a);
-	printf("------b------\n");
-	print_list(b);
+		quicksort_stack(&a, &b);
+	// printf("------a------\n");
+	// print_list(a);
+	// printf("------b------\n");
+	// print_list(b);
 	free_stack(a);
 	free_stack(b);
 	return (0);

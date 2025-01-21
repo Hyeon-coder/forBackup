@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:52:31 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/10 15:50:16 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:03:57 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ t_stack	*input_parse(int ac, char **av)
 	rst = input_tmp_stack(ac, av);
 	if (check_double(rst))
 		exit_error(1, rst, NULL);
-	rst->size = ac - 1;
 	return (rst);
 }

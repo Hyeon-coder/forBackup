@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:14:40 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/01/14 12:11:19 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/15 08:53:34 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ps_reverse(t_stack **lst)
 	t_stack	*last;
 	t_stack	*second_last;
 
-	if ((*lst)->size > 1)
+	if (ft_lstsize(*lst) > 1)
 	{
 		last = *lst;
 		second_last = NULL;
