@@ -12,18 +12,18 @@
 
 #include "push_swap.h"
 
-void	print_list(t_stack *lst)
-{
-	t_stack	*tmp;
+// void	print_list(t_stack *lst)
+// {
+// 	t_stack	*tmp;
 
-	tmp = (t_stack *)lst;
-	while (tmp)
-	{
-		printf("%d\n", (tmp->num));
-		tmp = tmp->next;
-	}
-}
-
+// 	tmp = (t_stack *)lst;
+// 	while (tmp)
+// 	{
+// 		printf("%d\n", (tmp->num));
+// 		tmp = tmp->next;
+// 	}
+// }
+// 
 int	main(int ac, char **av)
 {
 	t_stack	*a;
@@ -35,10 +35,10 @@ int	main(int ac, char **av)
 		sort_three(&a);
 	else
 		quicksort_stack(&a, &b);
-	printf("------a------\n");
-	print_list(a);
-	printf("------b------\n");
-	print_list(b);
+	// printf("------a------\n");
+	// print_list(a);
+	// printf("------b------\n");
+	// print_list(b);
 	free_stack(a);
 	free_stack(b);
 	return (0);
