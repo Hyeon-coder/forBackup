@@ -12,18 +12,6 @@
 
 #include "push_swap.h"
 
-int	calculate_pivot(t_stack *a)
-{
-	int	*arr;
-	int	pivot;
-
-	arr = stack_to_array(a, ft_lstsize(a));
-	sort_array(arr, ft_lstsize(a));
-	pivot = arr[ft_lstsize(a) / 2];
-	free(arr);
-	return (pivot);
-}
-
 void	sort_three(t_stack **a)
 {
 	int	top;
@@ -71,23 +59,51 @@ void	sort_five(t_stack **a, t_stack **b)
 	}
 }
 
-void quicksort_stack(t_stack **a, t_stack **b)
+void partition_stack(t_stack **a, t_stack **b, int pivot, int *moved_to_b)
 {
-	int pivot;
-	int	i;
+	int size_a;
+	int i;
 
-	i = ft_lstsize(*a);
-	pivot = calculate_pivot(*a);
-	printf("pivot >>> %d\n", pivot);
-	while (i--)
+	size_a = ft_lstsize(*a);
+	*moved_to_b = 0;
+	i = size_a;
+	while (i-- > 0)
 	{
 		if (stack_peek(*a) < pivot)
-			pa(a, b);
+		{
+			pb(a, b);
+			(*moved_to_b)++;
+			if (ft_lstsize(*b) > 1 && stack_peek(*b) < (*b)->next->num)
+				sb(b, 1);
+		}
 		else
 			ra(a, 1);
 	}
-	printf("--a--\n");
-	print_list(*a);
-	printf("--b--\n");
-	print_list(*b);
+}
+
+void merge_stack(t_stack **a, t_stack **b, int moved_to_b)
+{
+	while (moved_to_b-- > 0)
+	{
+		pa(b, a);
+		if (ft_lstsize(*a) > 1 && stack_peek(*a) > (*a)->next->num)
+			sa(a, 1);
+	}
+}
+
+void quicksort_stack(t_stack **a, t_stack **b)
+{
+	int pivot;
+	int moved_to_b;
+
+	if (ft_lstsize(*a) <= 1 || is_sorted(*a))
+		return;
+
+	pivot = calculate_pivot(*a);
+	partition_stack(a, b, pivot, &moved_to_b);
+	quicksort_stack(a, b);
+	merge_stack(a, b, moved_to_b);
+
+	if (!is_sorted(*a))
+		quicksort_stack(a, b);
 }

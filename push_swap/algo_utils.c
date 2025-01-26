@@ -54,3 +54,26 @@ void	sort_array(int *arr, int size)
 		i++;
 	}
 }
+
+int	calculate_pivot(t_stack *a)
+{
+	int	*arr;
+	int	pivot;
+
+	arr = stack_to_array(a, ft_lstsize(a));
+	sort_array(arr, ft_lstsize(a));
+	pivot = arr[ft_lstsize(a) / 2];
+	free(arr);
+	return (pivot);
+}
+
+int is_sorted(t_stack *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->num > stack->next->num)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}

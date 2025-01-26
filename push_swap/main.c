@@ -33,14 +33,12 @@ int	main(int ac, char **av)
 	b = NULL;
 	if (ft_lstsize(a) <= 3)
 		sort_three(&a);
-	else if (ft_lstsize(a) <= 5)
-		sort_five(&a, &b);
 	else
 		quicksort_stack(&a, &b);
-	// printf("------a------\n");
-	// print_list(a);
-	// printf("------b------\n");
-	// print_list(b);
+	printf("------a------\n");
+	print_list(a);
+	printf("------b------\n");
+	print_list(b);
 	free_stack(a);
 	free_stack(b);
 	return (0);
