@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#define INT_MAX 2147483647
+#define INT_MIN (-2147483647 - 1)
 
 void	exit_error(int i, t_stack *a, t_stack *b)
 {
@@ -25,19 +27,23 @@ void	exit_error(int i, t_stack *a, t_stack *b)
 
 int	ft_atoi(const char *str)
 {
-	long	num;
-	int		flag;
+	long num;
+	long flag;
 
 	num = 0;
 	flag = 1;
-	if (*str == '-')
-		flag = -1;
 	if (*str == '-' || *str == '+')
+	{
+		if (!(*(str + 1) >= '0' && *(str + 1) <= '9'))
+			exit_error(1, NULL, NULL);
+		if (*str == '-')
+			flag = -1;
 		str++;
+	}
 	while (*str >= '0' && *str <= '9')
 	{
 		num = num * 10 + (*str - '0');
-		if (!(-2147483648 < (num * flag) || (num * flag) < 2147483647))
+		if ((flag == 1 && num > INT_MAX) || (flag == -1 && -num < INT_MIN))
 			exit_error(1, NULL, NULL);
 		str++;
 	}

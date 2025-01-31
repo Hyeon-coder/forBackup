@@ -24,7 +24,6 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-// void	print_list(t_stack *lst);
 t_stack	*input_parse(int ac, char **av);
 int		ft_isvalid_input(char **av);
 int		check_double(t_stack *a);
