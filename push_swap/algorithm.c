@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 06:59:18 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/15 10:45:09 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:22:13 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	sort_three(t_stack **a)
 		rra(a, 1);
 }
 
-void partition_stack(t_stack **a, t_stack **b, int pivot, int *moved_to_b)
+void	partition_stack(t_stack **a, t_stack **b, int pivot, int *moved_to_b)
 {
-	int size_a;
-	int i;
+	int	size_a;
+	int	i;
 
 	size_a = ft_lstsize(*a);
 	*moved_to_b = 0;
@@ -61,7 +61,7 @@ void partition_stack(t_stack **a, t_stack **b, int pivot, int *moved_to_b)
 	}
 }
 
-void merge_stack(t_stack **a, t_stack **b, int moved_to_b)
+void	merge_stack(t_stack **a, t_stack **b, int moved_to_b)
 {
 	while (moved_to_b-- > 0)
 	{
@@ -71,19 +71,17 @@ void merge_stack(t_stack **a, t_stack **b, int moved_to_b)
 	}
 }
 
-void quicksort_stack(t_stack **a, t_stack **b)
+void	quicksort_stack(t_stack **a, t_stack **b)
 {
-	int pivot;
-	int moved_to_b;
+	int	pivot;
+	int	moved_to_b;
 
 	if (ft_lstsize(*a) <= 1 || is_sorted(*a))
-		return;
-
+		return ;
 	pivot = calculate_pivot(*a);
 	partition_stack(a, b, pivot, &moved_to_b);
 	quicksort_stack(a, b);
 	merge_stack(a, b, moved_to_b);
-
 	if (!is_sorted(*a))
 		quicksort_stack(a, b);
 }
