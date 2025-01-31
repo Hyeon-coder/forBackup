@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:14:47 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/01/15 08:54:36 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:10:50 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ps_push(t_stack **lst, t_stack **dst)
 	if (ft_lstsize(*lst) >= 1)
 	{
 		tmp = stack_pop(lst);
-		
 		stack_push(dst, tmp);
 	}
 }

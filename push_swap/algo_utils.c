@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 07:40:08 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/14 10:18:34 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:21:54 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,15 @@ int	calculate_pivot(t_stack *a)
 	int	pivot;
 
 	arr = stack_to_array(a, ft_lstsize(a));
+	if (!arr)
+		return (0);
 	sort_array(arr, ft_lstsize(a));
 	pivot = arr[ft_lstsize(a) / 2];
 	free(arr);
 	return (pivot);
 }
 
-int is_sorted(t_stack *stack)
+int	is_sorted(t_stack *stack)
 {
 	while (stack && stack->next)
 	{

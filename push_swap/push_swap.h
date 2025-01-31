@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:37:42 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/15 10:17:27 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:39:08 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-// void	print_list(t_stack *lst);
+void	print_list(t_stack *lst);
 t_stack	*input_parse(int ac, char **av);
 int		ft_isvalid_input(char **av);
 int		check_double(t_stack *a);
