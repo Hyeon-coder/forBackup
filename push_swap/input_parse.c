@@ -46,7 +46,7 @@ t_stack	*input_tmp_stack(int ac, char **av)
 		if (i == 1)
 			rst = ft_lstnew(num);
 		else
-			stack_push(&rst, ft_lstnew(num));
+			stack_append(&rst, ft_lstnew(num));
 		i++;
 	}
 	return (rst);

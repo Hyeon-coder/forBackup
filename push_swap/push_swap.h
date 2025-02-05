@@ -58,5 +58,6 @@ int		*stack_to_array(t_stack *a, int size);
 void	sort_three(t_stack **a);
 void	quicksort_stack(t_stack **a, t_stack **b);
 int		is_sorted(t_stack *stack);
+void 	stack_append(t_stack **stack, t_stack *new_node);
 
 #endif

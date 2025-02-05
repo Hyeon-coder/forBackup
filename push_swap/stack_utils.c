@@ -20,6 +20,21 @@ void	stack_push(t_stack **lst, t_stack *new)
 	*lst = new;
 }
 
+void stack_append(t_stack **stack, t_stack *new_node)
+{
+	t_stack *temp;
+
+	if (!(*stack))
+	{
+		*stack = new_node;
+		return;
+	}
+	temp = *stack;
+	while (temp->next)
+		temp = temp->next;
+	temp->next = new_node;
+}
+
 t_stack	*stack_pop(t_stack **lst)
 {
 	t_stack	*popped_node;
