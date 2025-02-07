@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:14:47 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/01/27 19:10:50 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/02/07 16:09:27 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	ps_push(t_stack **lst, t_stack **dst)
 void	pa(t_stack **lst, t_stack **dst)
 {
 	ps_push(lst, dst);
-	printf("pa\n");
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack **lst, t_stack **dst)
 {
 	ps_push(lst, dst);
-	printf("pb\n");
+	write(1, "pb\n", 3);
 }

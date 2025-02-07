@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:52:31 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/27 21:11:34 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/02/07 15:00:57 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,21 @@ int	check_double(t_stack *a)
 	return (0);
 }
 
-t_stack	*input_tmp_stack(int ac, char **av)
+t_stack	*input_tmp_stack(int ac, char **av, int flag)
 {
 	t_stack	*rst;
 	int		num;
 	int		i;
 
 	rst = NULL;
-	i = 1;
+	if (flag == 1)
+		i = 0;
+	else
+		i = 1;
 	while (i < ac)
 	{
 		num = ft_atoi(av[i]);
-		if (i == 1)
+		if ((i == 1 || i == 0) && !rst)
 			rst = ft_lstnew(num);
 		else
 			stack_append(&rst, ft_lstnew(num));
@@ -52,17 +55,30 @@ t_stack	*input_tmp_stack(int ac, char **av)
 	return (rst);
 }
 
-t_stack	*input_parse(int ac, char **av)
+t_stack	*input_parse(int ac, char **av, int flag)
 {
 	t_stack	*rst;
 
 	rst = NULL;
-	if (ac == 1)
-		exit(0);
-	if (ft_isvalid_input(av))
-		exit_error(1, NULL, NULL);
-	rst = input_tmp_stack(ac, av);
-	if (check_double(rst))
-		exit_error(1, rst, NULL);
+	if (flag == 1)
+	{
+		if (ac == 0)
+			exit(0);
+		if (ft_isvalid_input(av, flag))
+			exit_error(1, NULL, NULL);
+		rst = input_tmp_stack(ac, av, flag);
+		if (check_double(rst))
+			exit_error(1, rst, NULL);
+	}
+	else
+	{
+		if (ac == 1)
+			exit(0);
+		if (ft_isvalid_input(av, flag))
+			exit_error(1, NULL, NULL);
+		rst = input_tmp_stack(ac, av, flag);
+		if (check_double(rst))
+			exit_error(1, rst, NULL);
+	}
 	return (rst);
 }

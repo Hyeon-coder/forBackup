@@ -6,13 +6,11 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 20:04:08 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/15 08:56:50 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/02/07 13:32:51 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#define INT_MAX 2147483647
-#define INT_MIN (-2147483647 - 1)
 
 void	exit_error(int i, t_stack *a, t_stack *b)
 {
@@ -43,7 +41,8 @@ int	ft_atoi(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		num = num * 10 + (*str - '0');
-		if ((flag == 1 && num > INT_MAX) || (flag == -1 && -num < INT_MIN))
+		if ((flag == 1 && num > 2147483647) || \
+			(flag == -1 && -num < -2147483648))
 			exit_error(1, NULL, NULL);
 		str++;
 	}
@@ -61,3 +60,14 @@ t_stack	*ft_lstnew(int num)
 	n_num->next = NULL;
 	return (n_num);
 }
+
+size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
