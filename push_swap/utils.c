@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 20:04:08 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/02/07 13:32:51 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:32:43 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	exit_error(int i, t_stack *a, t_stack *b)
 
 int	ft_atoi(const char *str)
 {
-	long num;
-	long flag;
+	long	num;
+	long	flag;
 
 	num = 0;
 	flag = 1;
@@ -42,7 +42,7 @@ int	ft_atoi(const char *str)
 	{
 		num = num * 10 + (*str - '0');
 		if ((flag == 1 && num > 2147483647) || \
-			(flag == -1 && -num < -2147483648))
+			(flag == -1 && (-1 * num) < -2147483648))
 			exit_error(1, NULL, NULL);
 		str++;
 	}
@@ -70,4 +70,3 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-

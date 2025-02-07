@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:37:42 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/02/07 16:18:36 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:31:22 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
-#include <stdio.h>
 
 typedef struct s_stack
 {
@@ -58,7 +56,7 @@ int		*stack_to_array(t_stack *a, int size);
 void	sort_three(t_stack **a);
 void	quicksort_stack(t_stack **a, t_stack **b);
 int		is_sorted(t_stack *stack);
-void 	stack_append(t_stack **stack, t_stack *new_node);
+void	stack_append(t_stack **stack, t_stack *new_node);
 size_t	ft_strlen(const char *s);
 char	**ft_split(char const *s, char c);
 size_t	ft_countword(char const *s, char c);
