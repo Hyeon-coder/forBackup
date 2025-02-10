@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 22:03:01 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/15 10:04:35 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:31:11 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	stack_push(t_stack **lst, t_stack *new)
 	*lst = new;
 }
 
-void stack_append(t_stack **stack, t_stack *new_node)
+void	stack_append(t_stack **stack, t_stack *new_node)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (!(*stack))
 	{
 		*stack = new_node;
-		return;
+		return ;
 	}
 	temp = *stack;
 	while (temp->next)

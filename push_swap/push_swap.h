@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:37:42 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/27 19:39:08 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/02/07 16:31:22 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,14 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-#include <stdio.h>
-
 typedef struct s_stack
 {
 	int				num;
 	struct s_stack	*next;
 }					t_stack;
 
-t_stack	*input_parse(int ac, char **av);
-int		ft_isvalid_input(char **av);
+t_stack	*input_parse(int ac, char **av, int flag);
+int		ft_isvalid_input(char **av, int flag);
 int		check_double(t_stack *a);
 void	exit_error(int i, t_stack *a, t_stack *b);
 int		ft_atoi(const char *str);
@@ -34,7 +32,7 @@ t_stack	*stack_pop(t_stack **lst);
 int		stack_peek(t_stack *lst);
 void	free_stack(t_stack *stack);
 t_stack	*ft_lstnew(int num);
-t_stack	*input_tmp_stack(int ac, char **av);
+t_stack	*input_tmp_stack(int ac, char **av, int flag);
 int		ft_lstsize(t_stack *lst);
 void	ps_push(t_stack **lst, t_stack **dst);
 void	pa(t_stack **lst, t_stack **dst);
@@ -58,6 +56,11 @@ int		*stack_to_array(t_stack *a, int size);
 void	sort_three(t_stack **a);
 void	quicksort_stack(t_stack **a, t_stack **b);
 int		is_sorted(t_stack *stack);
-void 	stack_append(t_stack **stack, t_stack *new_node);
+void	stack_append(t_stack **stack, t_stack *new_node);
+size_t	ft_strlen(const char *s);
+char	**ft_split(char const *s, char c);
+size_t	ft_countword(char const *s, char c);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+char	*ft_strdup(const char *s);
 
 #endif

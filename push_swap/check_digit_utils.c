@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 21:25:22 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/01/10 14:01:20 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:30:40 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ int	ft_isspace(char **av)
 	return (0);
 }
 
-int	ft_isvalid_input(char **av)
+int	ft_isvalid_input(char **av, int flag)
 {
 	int	i;
 	int	j;
 
-	i = 1;
+	if (flag == 1)
+		i = 0;
+	else
+		i = 1;
 	while (av[i])
 	{
 		j = 0;

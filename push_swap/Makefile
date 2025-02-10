@@ -6,7 +6,7 @@
 #    By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/07 20:04:17 by juhyeonl          #+#    #+#              #
-#    Updated: 2025/01/14 12:05:28 by juhyeonl         ###   ########.fr        #
+#    Updated: 2025/02/07 14:34:09 by juhyeonl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ SRCS = \
 		ft_push.c \
 		ft_reverse.c \
 		ft_rotate.c \
+		ft_split_utils.c \
+		ft_split.c \
 		ft_swap.c \
 		stack_utils.c \
 		utils.c
