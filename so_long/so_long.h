@@ -3,36 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 21:08:29 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/02/12 21:08:29 by juhyeonl         ###   ########.fr       */
+/*   Created: 2025/02/15 16:38:46 by juhyeonl          #+#    #+#             */
+/*   Updated: 2025/02/18 15:42:01 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <unistd.h>
+# include <stdio.h>
 # include <stdlib.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include "mlx.h"
+# include "get_next_line.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
+# define TILE_SIZE 64
 
-typedef struct s_map
+typedef struct s_game
 {
-    char	**map;
-    int		width;
-    int		height;
-}	t_map;
+	void	*mlx;
+	void	*win;
+	char	**map;
+	int		width;
+	int		height;
+	int		player_x;
+	int		player_y;
+	int		collectibles;
+	int		moves;
+	void	*img_wall;
+	void	*img_player;
+	void	*img_collectible_before;
+	void	*img_collectible_after;
+	void	*img_exit_close;
+	void	*img_exit_open;
+	void	*img_floor;
+}	t_game;
 
-char	*get_next_line(int fd);
-char	*ft_update_left_str(int fd, char *left);
-char	*ft_extract_line(char *left);
-char	*ft_trim_left_str(char *left);
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
+// map_reader.c
+char	**read_map(char *filename, int *width, int *height);
+
+// map_validator.c
+int		validate_map(t_game *game);
+
+// render.c
+void	render_map(t_game *game);
+void	put_tile(t_game *game, int x, int y);
+void	render_player(t_game *game);
+
+// events.c
+int		handle_keypress(int keycode, t_game *game);
+int		handle_exit(t_game *game);
+int		handle_resize(t_game *game);
+void	move_count(t_game *game);
+
+// utils.c
+void	free_map(char **map, int height);
+void	load_images(t_game *game);
+void	init_map(t_game *game, char *map_file);
+void	init_window(t_game *game);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
 #endif

@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/01 12:19:31 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/02/01 12:39:30 by juhyeonl         ###   ########.fr       */
+/*   Created: 2025/02/15 17:45:26 by juhyeonl          #+#    #+#             */
+/*   Updated: 2025/02/18 15:52:12 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minilibx-linux/mlx.h"
-#include "so_long.h"
 
 int	main()
 {
