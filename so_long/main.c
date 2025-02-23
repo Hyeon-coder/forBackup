@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 17:45:26 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/02/15 19:17:04 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:52:12 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,19 @@ void	load_images(t_game *game)
 			&img_w, &img_h);
 	game->img_player = mlx_xpm_file_to_image(game->mlx, "./images/chara.xpm",
 			&img_w, &img_h);
-	game->img_collectible = mlx_xpm_file_to_image(game->mlx, "./images/chest.xpm",
+	game->img_collectible_before = mlx_xpm_file_to_image(game->mlx, "./images/chest.xpm",
 			&img_w, &img_h);
-	game->img_exit = mlx_xpm_file_to_image(game->mlx, "./images/chest_open.xpm",
+	game->img_collectible_after = mlx_xpm_file_to_image(game->mlx, "./images/chest_open.xpm",
+			&img_w, &img_h);
+	game->img_exit_close = mlx_xpm_file_to_image(game->mlx, "./images/rune.xpm",
+			&img_w, &img_h);
+	game->img_exit_open = mlx_xpm_file_to_image(game->mlx, "./images/rune_light.xpm",
 			&img_w, &img_h);
 	game->img_floor = mlx_xpm_file_to_image(game->mlx, "./images/land.xpm",
 			&img_w, &img_h);
-	if (!game->img_wall || !game->img_player || !game->img_collectible
-		|| !game->img_exit || !game->img_floor)
+	if (!game->img_wall || !game->img_player || !game->img_collectible_after
+		|| !game->img_collectible_before || !game->img_exit_close
+		|| !game->img_exit_open || !game->img_floor)
 	{
 		ft_putstr_fd("Error: Failed to load one or more images\n", 2);
 		exit(1);
@@ -88,11 +93,13 @@ int	main(int argc, char **argv)
 	init_window(&game);
 	load_images(&game);
 	render_map(&game);
-
-	// 🔹 기존 코드 (mlx_key_hook) → 변경 필요!
-	// mlx_key_hook(game.win, handle_keypress, &game);
-
-	// 🔹 수정된 코드 (mlx_hook 사용)
+	game.moves = 0;
+	write(1, "moves : ", 8);
+	ft_putnbr_fd(game.moves, 1);
+	write(1, "\n", 1);
+	write(1, "collectibles : ", ft_strlen("collectibles : "));
+	ft_putnbr_fd(game.collectibles, 1);
+	write(1, "\n", 1);
 	mlx_hook(game.win, 2, 1L << 0, handle_keypress, &game);
 	mlx_hook(game.win, 17, 0, handle_exit, &game);
 	mlx_loop(game.mlx);
