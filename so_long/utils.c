@@ -6,7 +6,7 @@
 /*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 16:41:56 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/02/18 11:43:17 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/02/15 18:23:25 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,6 @@ void	ft_putstr_fd(char *s, int fd)
 	if (!s)
 		return;
 	write(fd, s, ft_strlen(s));
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	char	temp;
-
-	if (n == -2147483648)
-	{
-		write(fd, "-2147483648", 11);
-		return ;
-	}
-	if (n < 0)
-	{
-		write(fd, "-", 1);
-		n *= -1;
-	}
-	while (n >= 10)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		n %= 10;
-	}
-	if (n < 10)
-	{
-		temp = n + '0';
-		write(fd, &temp, 1);
-	}
 }
 
 void	free_map(char **map, int height)
