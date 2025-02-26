@@ -3,25 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 16:41:42 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/02/18 14:02:02 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:07:21 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// W or ↓ == 119 or 65362
-// S or ↓ == 115 or 65364
-// A or ← == 97 or 65361
-// D or → == 100 or 65363
-
 #include "so_long.h"
 
-void	move_count(t_game *game)
+static void	handle_move_and_count(t_game *game, int new_x, int new_y)
 {
-	game->moves += 1;
-	ft_putnbr_fd(game->moves, 1);
-	write(1, "\n", 1);
+	if (game->map[new_y][new_x] != '1')
+	{
+		if (game->map[new_y][new_x] == 'C')
+			game->collectibles--;
+		game->map[game->player_y][game->player_x] = '0';
+		game->player_x = new_x;
+		game->player_y = new_y;
+		game->map[new_y][new_x] = 'P';
+		render_map(game);
+		game->moves++;
+		ft_putnbr_fd(game->moves, 1);
+		write(1, "\n", 1);
+		if (game->map[new_y][new_x] == 'E' && game->collectibles == 0)
+		{
+			ft_putstr_fd("Congratulations! You've won the game.\n", 1);
+			exit(0);
+		}
+	}
 }
 
 int	handle_keypress(int keycode, t_game *game)
@@ -29,27 +39,26 @@ int	handle_keypress(int keycode, t_game *game)
 	int	new_x;
 	int	new_y;
 
-	new_x = game->player_x;
-	new_y = game->player_y;
 	if (keycode == 65307)
 		exit(0);
-	else if (keycode == 119 || keycode == 65362)
-		new_y -= 1;
+	new_x = game->player_x;
+	new_y = game->player_y;
+	if (keycode == 119 || keycode == 65362)
+		new_y--;
 	else if (keycode == 115 || keycode == 65364)
-		new_y += 1;
+		new_y++;
 	else if (keycode == 97 || keycode == 65361)
-		new_x -= 1;
+		new_x--;
 	else if (keycode == 100 || keycode == 65363)
-		new_x += 1;        
-	if (game->map[new_y][new_x] != '1')
-	{
-		game->map[game->player_y][game->player_x] = '0';
-		game->player_x = new_x;
-		game->player_y = new_y;
-		game->map[game->player_y][game->player_x] = 'P';
-		render_map(game);
-	}
-	move_count(game);
+		new_x++;
+	handle_move_and_count(game, new_x, new_y);
 	return (0);
 }
 
+int	handle_resize(int width, int height, t_game *game)
+{
+	(void)width;
+	(void)height;
+	render_map(game);
+	return (0);
+}

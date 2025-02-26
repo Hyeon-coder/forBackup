@@ -3,37 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   map_reader.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/15 16:41:02 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/02/15 16:47:54 by juhyeonl         ###   ########.fr       */
+/*   Created: 2025/02/23 20:54:21 by JuHyeon           #+#    #+#             */
+/*   Updated: 2025/02/23 20:59:31 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char **read_map(char *filename, int *width, int *height)
+static int	count_lines(char *filename)
 {
-    int fd;
-    char *line;
-    char **map;
-    int row = 0;
+	int		fd;
+	int		count;
+	char	*line;
 
-    fd = open(filename, O_RDONLY);
-    if (fd < 0)
-        return (NULL);
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (-1);
+	count = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+		count++;
+	}
+	close(fd);
+	return (count);
+}
 
-    map = malloc(sizeof(char *) * 100); // 최대 100줄 (예제)
-    if (!map)
-        return (NULL);
+static void	read_map_lines(char **map, int fd, int height)
+{
+	int		row;
+	char	*line;
 
-    while ((line = get_next_line(fd)))
-    {
-        map[row++] = line;
-    }
-    map[row] = NULL;
-    *height = row;
-    *width = (row > 0) ? (int)ft_strlen(map[0]) - 1 : 0;
-    close(fd);
-    return (map);
+	row = 0;
+	line = get_next_line(fd);
+	while (row < height && line)
+	{
+		map[row++] = line;
+		line = get_next_line(fd);
+	}
+	map[row] = NULL;
+}
+
+char	**read_map(char *filename, int *width, int *height)
+{
+	int		fd;
+	char	**map;
+
+	*height = count_lines(filename);
+	if (*height <= 0)
+		return (NULL);
+	map = malloc(sizeof(char *) * (*height + 1));
+	if (!map)
+		return (NULL);
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
+	read_map_lines(map, fd, *height);
+	*width = 0;
+	if (*height > 0 && map[0])
+		*width = (int)ft_strlen(map[0]) - 1;
+	close(fd);
+	return (map);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 16:38:46 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/02/18 15:42:01 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/02/23 20:25:00 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include "mlx.h"
-# include "get_next_line.h"
+# include "get_next_line/get_next_line.h"
 
 # define TILE_SIZE 64
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 14:00:00 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/02/18 15:43:33 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:01:22 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,21 +61,15 @@ void	render_player(t_game *game)
 	}
 }
 
-// void	is_complete(t_game game)
-// {
-// 	if (game.player_x == game.win)
-// }
-
 void	render_map(t_game *game)
 {
 	int	x;
 	int	y;
 
-	// is_complete(game);
 	if (!game->mlx || !game->win || !game->map)
 	{
 		ft_putstr_fd("Error: Null reference in game structure\n", 2);
-		return;
+		return ;
 	}
 	y = 0;
 	while (y < game->height)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:33:14 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/02/07 16:18:48 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:07:13 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ int	main(int ac, char **av)
 		a = input_parse(ac, av, 0);
 		b = NULL;
 	}
-	if (ft_lstsize(a) <= 3)
-		sort_three(&a);
-	else
-		quicksort_stack(&a, &b);
+	radix_sort(&a, &b);
 	free_stack(a);
 	free_stack(b);
 	return (0);

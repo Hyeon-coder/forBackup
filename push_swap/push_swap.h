@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 19:37:42 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/02/07 16:31:22 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:48:24 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
+/* 라딕스 정렬 함수 */
+void	radix_sort(t_stack **a, t_stack **b);
+
+/* 나머지 기존 선언 유지 */
 t_stack	*input_parse(int ac, char **av, int flag);
 int		ft_isvalid_input(char **av, int flag);
 int		check_double(t_stack *a);
@@ -50,12 +54,6 @@ void	rra(t_stack **lst, int flag);
 void	rrb(t_stack **lst, int flag);
 void	rrr(t_stack **lst, t_stack **lst2);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
-int		calculate_pivot(t_stack *a);
-void	sort_array(int *arr, int size);
-int		*stack_to_array(t_stack *a, int size);
-void	sort_three(t_stack **a);
-void	quicksort_stack(t_stack **a, t_stack **b);
-int		is_sorted(t_stack *stack);
 void	stack_append(t_stack **stack, t_stack *new_node);
 size_t	ft_strlen(const char *s);
 char	**ft_split(char const *s, char c);

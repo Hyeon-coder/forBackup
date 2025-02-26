@@ -3,34 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   map_validator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 16:41:18 by juhyeonl          #+#    #+#             */
-/*   Updated: 2025/02/18 15:55:51 by juhyeonl         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:01:04 by JuHyeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int validate_map(t_game *game)
+static void	check_tile(t_game *game, int x, int y, int *flags)
 {
-    int x, y;
-    int has_player = 0;
-    int has_exit = 0;
+	if (game->map[y][x] == 'P')
+	{
+		flags[0] = 1;
+		game->player_x = x;
+		game->player_y = y;
+	}
+	else if (game->map[y][x] == 'E')
+		flags[1] = 1;
+}
 
-    for (y = 0; y < game->height; y++)
-    {
-        for (x = 0; x < game->width; x++)
-        {
-            if (game->map[y][x] == 'P')
-            {
-                has_player = 1;
-                game->player_x = x;
-                game->player_y = y;
-            }
-            else if (game->map[y][x] == 'E')
-                has_exit = 1;
-        }
-    }
-    return (has_player && has_exit);
+int	validate_map(t_game *game)
+{
+	int	x;
+	int	y;
+	int	flags[2];
+
+	flags[0] = 0;
+	flags[1] = 0;
+	y = 0;
+	while (y < game->height)
+	{
+		x = 0;
+		while (x < game->width)
+		{
+			check_tile(game, x, y, flags);
+			x++;
+		}
+		y++;
+	}
+	if (flags[0] && flags[1])
+		return (1);
+	return (0);
 }
