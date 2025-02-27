@@ -70,3 +70,14 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
+
+int	is_sorted(t_stack *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->num > stack->next->num)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}

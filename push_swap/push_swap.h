@@ -60,5 +60,6 @@ char	**ft_split(char const *s, char c);
 size_t	ft_countword(char const *s, char c);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 char	*ft_strdup(const char *s);
+int		is_sorted(t_stack *stack);
 
 #endif
