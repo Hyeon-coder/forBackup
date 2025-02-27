@@ -3,22 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JuHyeon <juhyeonl@student.hive.fi>         +#+  +:+       +#+        */
+/*   By: juhyeonl <juhyeonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 06:59:18 by JuHyeon           #+#    #+#             */
-/*   Updated: 2025/02/20 21:48:30 by JuHyeon          ###   ########.fr       */
+/*   Updated: 2025/02/27 11:55:52 by juhyeonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// 리스트 내 최댓값의 비트 수 계산
-static int get_max_bits(t_stack *stack)
+static int	get_max_bits(t_stack *stack)
 {
-	int max = 0;
-	int bits = 0;
-	t_stack *temp = stack;
+	int		max;
+	int		bits;
+	t_stack	*temp;
 
+	max = 0;
+	bits = 0;
+	temp = stack;
 	while (temp)
 	{
 		if (temp->num > max)
@@ -30,24 +32,26 @@ static int get_max_bits(t_stack *stack)
 	return (bits);
 }
 
-// 특정 숫자의 비트 수 계산
-static int get_bit_count(int num)
+static int	get_bit_count(int num)
 {
-	int bits = 0;
+	int	bits;
+
+	bits = 0;
 	while (num > 0)
 	{
 		num >>= 1;
 		bits++;
 	}
-	return bits;
+	return (bits);
 }
 
-// 높은 비트 수를 가진 숫자는 stack_b로 이동
-static void bit_grouping(t_stack **a, t_stack **b, int threshold)
+static void	bit_grouping(t_stack **a, t_stack **b, int threshold)
 {
-	int size = ft_lstsize(*a);
-	int i = 0;
+	int	size;
+	int	i;
 
+	size = ft_lstsize(*a);
+	i = 0;
 	while (i < size)
 	{
 		if (get_bit_count((*a)->num) > threshold)
@@ -58,10 +62,11 @@ static void bit_grouping(t_stack **a, t_stack **b, int threshold)
 	}
 }
 
-// i번째 비트를 기준으로 stack_b로 이동 또는 회전
-static void bit_pass(t_stack **a, t_stack **b, int i, int size)
+static void	bit_pass(t_stack **a, t_stack **b, int i, int size)
 {
-	int j = 0;
+	int	j;
+
+	j = 0;
 	while (j < size)
 	{
 		if ((((*a)->num >> i) & 1) == 0)
@@ -72,13 +77,12 @@ static void bit_pass(t_stack **a, t_stack **b, int i, int size)
 	}
 }
 
-// 개선된 radix_sort
-void radix_sort(t_stack **a, t_stack **b)
+void	radix_sort(t_stack **a, t_stack **b)
 {
-	int i;
-	int size;
-	int max_bits;
-	int threshold;
+	int	i;
+	int	size;
+	int	max_bits;
+	int	threshold;
 
 	if (is_sorted(*a))
 		return ;
